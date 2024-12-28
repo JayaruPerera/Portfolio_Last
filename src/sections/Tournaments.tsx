@@ -9,11 +9,11 @@ import Image from "next/image";
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const tournaments = [
   {
-    name: "Sarah Chen",
-    company: "Pixel Perfect",
-    role: "Head of Design",
+    name: "HackX",
+    company: "At Kalaniya University",
+    role: "2022",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website.",
+      "Our team made it to the semi-finals of the Inter-University Hackathon 2022 organized by Kelaniya University! 🎉 We pitched a problem-solving website in round one and battled against 30+ teams in the semi-finals.",
     image: image1,
     imagePositionY: 0.5,
   },
@@ -36,11 +36,11 @@ const tournaments = [
     imagePositionY: 0.5,
   },
   {
-    name: "Emily Watson",
-    company: "Studio Minimal",
-    role: "Creative Director",
+    name: "PearlHack 2.0",
+    company: "At SUSL",
+    role: "2024",
     quote:
-      "The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.",
+      "Proud to have led the logistics team and been part of this amazing journey at PearlHack 2.0! 🚚✨",
     image: image4,
     imagePositionY: 0.55,
   },
