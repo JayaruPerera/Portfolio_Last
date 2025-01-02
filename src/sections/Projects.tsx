@@ -42,7 +42,7 @@ const Projects: FC = () => {
   };
 
   return (
-    <section className="section">
+    <section className="section" id="projects">
       <div className="container mx-auto">
         <h2 className="text-4xl text-center mb-10 md:text-7xl lg:text-8xl">Projects</h2>
         <div className="mt-10 flex flex-col gap-8 md:mt-16 lg:mt-20">

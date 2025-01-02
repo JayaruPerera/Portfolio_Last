@@ -49,7 +49,7 @@ const tournaments = [
 const Tournaments: FC = () => {
   const tournamentsIndex = 0;
   return (
-  <section className="section"> 
+  <section className="section" id="tournaments"> 
     <h2 className="text-4xl md:text-7xl lg:text-8xl flex flex-col overflow-hidden">
       <span className="whitespace-nowrap">Tournaments that I have participated</span>
       <span className="whitespace-nowrap self-end bg-black text-white">Tournaments that I have participated</span>
