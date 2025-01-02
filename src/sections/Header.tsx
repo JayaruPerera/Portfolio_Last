@@ -124,7 +124,7 @@ const [navScope, navAnimate] = useAnimate();
   }
   }, [isOpen, topLineAnimate, topLineScope, bottomLineAnimate, bottomLineScope, navScope, navAnimate]);
 
-const handleClickMobileNavItem = (e: MouseEvent<HTMLAnchorElement>) => {
+const handleClickMobileNavItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
   e.preventDefault();
   setIsOpen(false);
 
