@@ -1,15 +1,15 @@
 "use client";
+
 import { FC, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import image1 from "@/assets/images/project-1.png";
 import image2 from "@/assets/images/project-2.png";
 import image3 from "@/assets/images/project-3.png";
 import image4 from "@/assets/images/project-4.png";
 import image5 from "@/assets/images/project-5.png";
-import Link from "next/link";
-import Image from "next/image";
 
 const projects = [
-  // Define project data array with type information
   {
     name: "Desha E-Mart",
     image: image1,
@@ -46,37 +46,50 @@ const Projects: FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [hoverStyles, setHoverStyles] = useState<{ [key: number]: React.CSSProperties }>({});
 
+  const handleMouseMove = (e: React.MouseEvent, index: number) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    setHoverStyles((prev) => ({
+      ...prev,
+      [index]: {
+        transform: `translate(${x / 10}px, ${y / 10}px) scale(1.1)`,
+      },
+    }));
+  };
+
   const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
   };
-  
-    const handleMouseLeave = (index: number) => {
-      setHoveredIndex(null);
-      setHoverStyles((prev) => ({
-        ...prev,
-        [index]: {
-          transform: "translate(0, 0) scale(1)",
-        },
-      }));
-    };
- 
-    return (
-      <section className="section" id="projects">
-        <div className="container mx-auto">
-          <h2 className="text-4xl text-center mb-10 md:text-7xl lg:text-8xl">
-            Projects
-          </h2>
-          <div className="flex flex-col space-y-8">
-            {projects.map(({ name, image, description }, index) => (
-              <div
-                key={name}
-                className="w-full border-t border-b border-gray-200 py-8 relative group"
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-2xl font-medium">{name}</h3>
-                  <div className="size-6">
+
+  const handleMouseLeave = (index: number) => {
+    setHoveredIndex(null);
+    setHoverStyles((prev) => ({
+      ...prev,
+      [index]: {
+        transform: "translate(0, 0) scale(1)",
+      },
+    }));
+  };
+
+  return (
+    <section className="section" id="projects">
+      <div className="container mx-auto">
+        <h2 className="text-4xl text-center mb-10 md:text-7xl lg:text-8xl">
+          Projects
+        </h2>
+        <div className="flex flex-col space-y-8">
+          {projects.map(({ name, image, description }, index) => (
+            <div
+              key={name}
+              className="w-full border-t border-b border-gray-200 py-8 relative group"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-medium">{name}</h3>
+                <div className="size-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -94,13 +107,18 @@ const Projects: FC = () => {
                 </div>
               </div>
 
-              <div className="aspect-video w-full overflow-hidden">
+              <div 
+                className="aspect-video w-full overflow-hidden"
+                onMouseMove={(e) => handleMouseMove(e, index)}
+              >
                 <Image
                   src={image}
                   alt={`${name} project`}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300"
+                  style={hoverStyles[index]}
                 />
               </div>
+
               {hoveredIndex === index && (
                 <div className="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="p-6 text-white max-w-2xl">
@@ -128,13 +146,13 @@ const Projects: FC = () => {
                     </Link>
                   </div>
                 </div>
-                 )}
-                 </div>
-               ))}
-             </div>
-           </div>
-         </section>
-       );
-     };         
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Projects;
