@@ -1,4 +1,8 @@
-import { FC } from "react";
+"use client";
+
+import useTextRevealAnimation from "@/hooks/useTextRevealAnimation";
+import { useInView } from "framer-motion";
+import { FC, useEffect} from "react";
 
 // const Footer: FC = () => {
 //   return (
@@ -136,36 +140,61 @@ import { FC } from "react";
 
 const navItems = [
   {
-    href:'#',
-    label:'Home'
+    href:'#intro',
+    label:'Intro'
   },
   {
-    href:'#',
+    href:'#projects',
     label:'Projects'
   },
   {
-    href:'#',
+    href:'#tournaments',
     label:'Tournaments'
   },
   {
-    href:'#',
+    href:'#contact',
     label:'Contact'
   },
 ]
 
 const Footer: FC = () => {
+  const {scope, entranceAnimation} = useTextRevealAnimation();
+  const inView = useInView(scope);
+
+  useEffect(() => {
+    if(inView) {
+    entranceAnimation();
+  }}, [inView, entranceAnimation]);
+
+
+  const handleClickNavItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+  
+    const url = new URL(e.currentTarget.href);
+    const hash = url.hash;
+  
+    // Check if hash exists and is valid
+    if (!hash || hash === '#') return;
+  
+    // Ensure hash is a valid selector
+    const target = document.querySelector(hash);
+  
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-stone-900 text-white" id="contact">
       <div className="container">
         <div className="section">
         <div className="flex items-center gap-3">
-          <div className="size-3 rounded-full bg-green-400"></div>
+          <div className="size-3 rounded-full bg-green-400 animate-bounce"></div>
           <span className="uppercase">Contact me for more information</span>
           </div>
 
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
-              <h2 className="text-4xl mt-8 font-extralight md:text-7xl lg:text-8xl">Dedicated tech enthusiast leveraging technology to solve real-world challenges</h2>
+              <h2 className="text-4xl mt-8 font-extralight md:text-7xl lg:text-8xl" ref={scope}>Dedicated tech enthusiast leveraging technology to solve real-world challenges</h2>
               
               <button className="mt-8 md:inline-flex relative inline-flex h-11 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
               <span className=" absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
@@ -184,7 +213,7 @@ const Footer: FC = () => {
           <div>
             <nav className="flex flex-col gap-8 mt-16 md:items-end md:mt-0">
               {navItems.map(({href, label}) => (
-                <a href={href} key={label}>
+                <a href={href} key={label} onClick={handleClickNavItem}>
                   <button className="uppercase text-lg">
                   {label}
                   </button>

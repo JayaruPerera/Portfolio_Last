@@ -1,58 +1,31 @@
 "use client";
 
-import { FC, useEffect } from "react";
-import SplitType from "split-type"; // Import SplitType for text animation splitting
-import { useAnimate, useInView, stagger } from "framer-motion";
+import { FC, useEffect, useRef } from "react";
+// import SplitType from "split-type"; // Import SplitType for text animation splitting
+import { useInView } from "framer-motion";
+import useTextRevealAnimation from "@/hooks/useTextRevealAnimation";
 
 const Intro: FC = () => {
-  const [scope, animate] = useAnimate(); // Create scope and animate function using useAnimate hook
+ const sectionRef = useRef<HTMLElement>(null);
+  const { scope, entranceAnimation } = useTextRevealAnimation();
   const inView = useInView(scope, {      // Set up intersection observer with useInView hook
     once: true,                          // Only trigger animation once when element comes into view
   });
 
   useEffect(() => {
-    if (scope.current) { // Ensure scope.current is not null
-      const targetElement = scope.current.querySelector("h1"); // Target the correct element
-      if (targetElement) {
-        new SplitType(targetElement, {
-          types: "lines,words", // Split text into lines and words
-          tagName: "span",       // Wrap split text in span elements
-        });
-      } else {
-        console.error("No <h1> element found inside scope.");
-      }
+    if(inView) {
+    entranceAnimation();
     }
-  }, [scope]);
-
-  useEffect(() => {
-    if (inView && scope.current) { // Ensure scope.current is not null
-      const words = scope.current.querySelectorAll(".word");
-      if (words.length > 0) {
-        animate(
-          words,
-          {
-            transform: "translateY(0%)", // Move words up
-          },
-          {
-            duration: 0.5,               // Animation duration
-            delay: stagger(0.2),        // Stagger each word's animation
-          }
-        );
-      } else {
-        console.error("No elements with the class 'word' found.");
-      }
-    }
-  }, [inView, animate, scope]);
-
-
+  }, [inView, entranceAnimation]);
+  
   return (
     <section
       className="mt-12 md-mt-16 lg:mt-20 section"
       id="intro"
-      ref={scope}
+      ref={sectionRef}
     >
       <div className="container">
-        <h1 className="text-4xl md:text-7xl lg:text-8xl lg:w-[80%]">
+        <h1 className="text-4xl md:text-7xl lg:text-8xl lg:w-[80%]" ref={scope}>
           Driven by curiosity for web development, mobile apps, cloud solutions, and AI advancements
         </h1>
       </div>
