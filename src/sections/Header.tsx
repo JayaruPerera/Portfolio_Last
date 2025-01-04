@@ -4,8 +4,6 @@ import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import {motion, useAnimate} from 'motion/react';
 
-
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
   {
     label: "About",
@@ -34,6 +32,7 @@ const Header: FC = () => {
   const [topLineScope, topLineAnimate] = useAnimate();
   const [bottomLineScope, bottomLineAnimate] = useAnimate();
 const [navScope, navAnimate] = useAnimate();
+
 
   useEffect (() => {
     if(isOpen) {
@@ -123,19 +122,45 @@ const [navScope, navAnimate] = useAnimate();
         );
   }
   }, [isOpen, topLineAnimate, topLineScope, bottomLineAnimate, bottomLineScope, navScope, navAnimate]);
+  
+  const handleClickMobileNavItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+  
+    const url = new URL(e.currentTarget.href);
+    // Remove the leading '#' from the hash
+    const hash = url.hash.replace('#', '');
+  
+    // Exit if no hash or invalid
+    if (!hash) return;
+  
+    // Use ID selector format
+    const target = document.getElementById(hash);
+  
+    if (!target) return;
+    
+    // Close mobile menu if open
+    setIsOpen(false);
+  
+    // Scroll to target
+    target.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
 
-const handleClickMobileNavItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault();
-  setIsOpen(false);
 
-  const url = new URL(e.currentTarget.href);
-  const hash = url.hash;
+//   const handleClickMobileNavItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
+//   e.preventDefault();
+//   setIsOpen(false);
 
-  const target = document.querySelector(hash);
+//   const url = new URL(e.currentTarget.href);
+//   const hash = url.hash;
 
-  if(!target) return;
-  target.scrollIntoView({behavior: 'smooth'})
-};
+//   const target = document.querySelector(hash);
+
+//   if(!target) return;
+//   target.scrollIntoView({behavior: 'smooth'})
+// };
 
   return (
     <header>
