@@ -9,36 +9,42 @@ import image3 from "@/assets/images/project-3.png";
 import image4 from "@/assets/images/project-4.png";
 import image5 from "@/assets/images/project-5.png";
 
+
 const projects = [
   {
     name: "Desha E-Mart",
     image: image1,
     description:
       "An e-commerce platform specializing in phones, laptops, and CCTV systems. It also offers repair services, allowing users to log in, track repair statuses, and manage their items conveniently",
+      link:"https://github.com/JayaruPerera/Desh-E-Mart"
   },
   {
     name: "Juris Connect",
     image: image2,
     description:
       "A legal platform designed to enhance the legal knowledge of Sri Lankans. Users can connect with lawyers and access the legal assistance they need efficiently",
+      link:"https://github.com/JayaruPerera/Juris-Connect"
   },
   {
     name: "Eat Me",
     image: image3,
     description:
       "A delightful website for purchasing cookies and cakes. Users can explore a variety of baked goods and place orders for their favorite treats",
+      link:'https://github.com/JayaruPerera/EatMe'
   },
   {
     name: "Hotel Website",
     image: image4,
     description:
       "A hotel website enabling users to book rooms online and make secure payments, ensuring a seamless and convenient booking experience",
+      link:'https://github.com/JayaruPerera/Hotel-Web'
   },
   {
     name: "MOODWAVE",
     image: image5,
     description:
       "A unique platform for music creators to analyze track emotions and for job seekers in the music industry to find opportunities and connect with professionals",
+      link:'https://github.com/minuri12/MoodWave'
   },
 ];
 
@@ -79,8 +85,9 @@ const Projects: FC = () => {
         <h2 className="text-4xl text-center mb-10 md:text-7xl lg:text-8xl">
           Projects
         </h2>
-        <div className="flex flex-col space-y-8">
-          {projects.map(({ name, image, description }, index) => (
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map(({ name, image, description, link }, index) => (
             <div
               key={name}
               className="w-full border-t border-b border-gray-200 py-8 relative group"
@@ -122,11 +129,12 @@ const Projects: FC = () => {
               {hoveredIndex === index && (
                 <div className="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="p-6 text-white max-w-2xl">
-                    <h3 className="text-2xl font-medium mb-4 md:text-5xl lg:text-6xl">{name}</h3>
-                    <p className="text-gray-300 md:text-4xl md:mt-8 lg:text-5xl lg:mt-12">{description}</p>
+                    <h3 className="text-2xl font-medium mb-4 md:text-2xl lg:text-4xl">{name}</h3>
+                    <p className="text-gray-300 md:text-xl md:mt-8 lg:text-2xl lg:mt-12">{description}</p>
                     <Link 
-                      href="/"
-                      className="mt-8 inline-flex items-center text-white hover:text-gray-300 md:text-3xl lg:text-4xl lg:mt-12"
+                      href={link}
+                      target="_blank"
+                      className="mt-8 inline-flex items-center text-white hover:text-gray-300 md:text-2xl lg:text-4xl lg:mt-12"
                     >
                       View Project
                       <svg
@@ -143,7 +151,7 @@ const Projects: FC = () => {
                           d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
                         />
                       </svg>
-                    </Link>
+                      </Link>
                   </div>
                 </div>
               )}

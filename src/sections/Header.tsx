@@ -165,7 +165,7 @@ const [navScope, navAnimate] = useAnimate();
   return (
     <header>
 
-      <div className="fixed top-0 left-0 w-full h-0 overflow-hidden h-full bg-stone-900 z-50" ref={navScope}>
+      <div className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-stone-900 z-50" ref={navScope}>
         <nav className="mt-20 flex flex-col">
           {navItems.map(({label,href}) => 
               <Link href={href} key={label} className="text-stone-200 border-t last:border-b border-stone-800 py-8 group/nav-item relative isolate" onClick={handleClickMobileNavItem} >

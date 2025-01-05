@@ -2,6 +2,7 @@
 
 import useTextRevealAnimation from "@/hooks/useTextRevealAnimation";
 import { useInView } from "framer-motion";
+import Link from "next/link";
 import { FC, useEffect} from "react";
 
 // const Footer: FC = () => {
@@ -194,8 +195,9 @@ const Footer: FC = () => {
 
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
-              <h2 className="text-4xl mt-8 font-extralight md:text-7xl lg:text-8xl" ref={scope}>Dedicated tech enthusiast leveraging technology to solve real-world challenges</h2>
+              <h2 className="text-2xl mt-8 font-extralight md:text-4xl lg:text-6xl  " ref={scope}>Dedicated tech enthusiast leveraging technology to solve real-world challenges</h2>
               
+              <Link href={`mailto:${'jayaruperera1998@gmail.com'}`}>
               <button className="mt-8 md:inline-flex relative inline-flex h-11 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
               <span className=" absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
               
@@ -208,6 +210,7 @@ const Footer: FC = () => {
 
               </span>
               </button>
+              </Link>
             </div>
 
           <div>
@@ -223,7 +226,7 @@ const Footer: FC = () => {
           </div>
               </div>
           
-            <p className="py-16 text-white-30 text-sm">Copyright &copy; Jayaru Perera &bull; All rights reserved</p>
+            <p className="py-6 text-white-30 text-sm">Copyright &copy; Jayaru Perera &bull; All rights reserved</p>
           </div>
       </div>
     </footer>
