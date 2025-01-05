@@ -16,25 +16,25 @@ const tournaments = [
     company: "At Kalaniya University",
     role: "2022",
     quote:
-      "Our team made it to the semi-finals of the Inter-University Hackathon 2022 organized by Kelaniya University! 🎉 We pitched a problem-solving website in round one and battled against 30+ teams in the semi-finals.",
+      "Our team reached the Inter-University Hackathon 2022 semi-finals with a problem-solving website! 🎉",
     image: image1,
     imagePositionY: 0.5,
   },
   {
-    name: "Marcus Rodriguez",
-    company: "Craft Coffee Co.",
-    role: "Founder",
+    name: "Hacktron",
+    company: "by SLTC",
+    role: "2021",
     quote:
-      "Alex transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.",
+      "We won 1st place in the 2021 Inter University Game Trailer Contest, creating our game in two weeks with Unity and Blender. Unforgettable experience! ❤️",
     image: image2,
-    imagePositionY: 0.1,
+    imagePositionY: 0.5,
   },
   {
-    name: "Emily Watson",
-    company: "Studio Minimal",
-    role: "Creative Director",
+    name: "Codefest",
+    company: "by SLIIT",
+    role: "2022",
     quote:
-      "The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.",
+      "Our team made it to the finals of the Inter-University Hackathon 2022 by SLIIT, building a website in a thrilling 12-hour challenge. It was an incredible journey of teamwork and creativity! 💡",
     image: image3,
     imagePositionY: 0.5,
   },
@@ -90,7 +90,7 @@ const Tournaments: FC = () => {
         }}>
           Tournaments that I have participated
         </motion.span>
-        <motion.span className="whitespace-nowrap self-end bg-black text-white lg:tracking-normal" style={{
+        <motion.span className="whitespace-nowrap self-end bg-gradient-to-r from-indigo-500 to-purple-500 text-white lg:tracking-normal" style={{
           x: transformBottom,
         }}>
           Tournaments that I have participated
@@ -109,6 +109,9 @@ const Tournaments: FC = () => {
             )}
             </AnimatePresence>
         </div>
+
+
+        {/* left right button */}
         <div className="flex gap-4 mt-6 lg:mt-10">
           <button className="border border-stone-400 size-11 inline-flex items-center justify-center rounded-full hover:bg-gradient-to-r from-indigo-500 to-purple-500  hover:text-white hover:border-purple-500 transition-all duration-300" onClick={handleClickPrev}>
             <svg

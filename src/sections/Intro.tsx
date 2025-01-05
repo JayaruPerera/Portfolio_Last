@@ -25,7 +25,7 @@ const Intro: FC = () => {
       ref={sectionRef}
     >
       <div className="container">
-        <h1 className="text-4xl md:text-7xl lg:text-8xl lg:w-[80%]" ref={scope}>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl " ref={scope}>
           Driven by curiosity for web development, mobile apps, cloud solutions, and AI advancements
         </h1>
       </div>

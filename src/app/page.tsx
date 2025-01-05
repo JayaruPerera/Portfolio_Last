@@ -5,7 +5,7 @@ import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
 import Projects from "@/sections/Projects";
 import Tournaments from "@/sections/Tournaments";
-
+import Tech from "@/sections/Tech";
 
 
 
@@ -15,6 +15,7 @@ export default function Home() {
   <Hero />
   <Intro />
   <Projects />
+  <Tech />
   <Tournaments />
   <Footer />
   </>
