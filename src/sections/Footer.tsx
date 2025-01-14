@@ -142,7 +142,7 @@ import { FC, useEffect} from "react";
 const navItems = [
   {
     href:'#intro',
-    label:'Intro'
+    label:'About'
   },
   {
     href:'#projects',
